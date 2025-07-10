@@ -5,14 +5,16 @@ interface SidebarProps {
 }
 
 const Navbar: React.FC<SidebarProps> = ({ authUrl }) => (
-  <nav className="bg-[#070707] text-white flex items-center justify-between px-8 py-4 w-full">
+  <nav className="bg-moodifybg text-white flex items-center justify-between px-8 py-4 w-full">
     <div className="flex items-center gap-4">
-      <img
-        src="/logo.png"
-        alt="Moodify Logo"
-        className="w-10 h-10"
-      />
-      <span className="text-xl font-bold">Moodify</span>
+      <a href="/" className="flex items-center gap-2">
+        <img
+          src="/logo.png"
+          alt="Moodify Logo"
+          className="w-10 h-10"
+        />
+        <span className="text-xl font-bold">Moodify</span>
+      </a>
     </div>
     <a
       href={authUrl}
