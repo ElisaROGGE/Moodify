@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Callback from './pages/Callback';
-import Mood from './pages/Mood';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -9,8 +9,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/callback" element={<Callback />} />
-        <Route path="/mood" element={<Mood />} />
       </Routes>
+      <ToastContainer />
     </Router>
   );
 }

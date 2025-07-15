@@ -6,7 +6,6 @@ interface SidebarProps {
   authUrl: string;
 }
 
-
 const Navbar: React.FC<SidebarProps> = ({ authUrl }) => {
   const [user, setUser] = useState<IUser | null>(null);
   const token = localStorage.getItem("spotify_access_token");
@@ -33,7 +32,7 @@ const Navbar: React.FC<SidebarProps> = ({ authUrl }) => {
           href={authUrl}
           className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
         >
-          Se connecter avec Spotify
+          Connexion
         </a>
       )}
     </nav>

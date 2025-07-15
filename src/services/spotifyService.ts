@@ -1,4 +1,22 @@
+import { generateAuthUrl } from "../utils/generateAuthUrl";
 import { generateCodeChallenge, generateCodeVerifier } from "../utils/pckeUtils";
+
+export interface SpotifyPlaylist {
+  id: string;
+  name: string;
+  description: string;
+  images: { url: string; height: number | null; width: number | null }[];
+  external_urls: { spotify: string };
+  owner: {
+    display_name: string;
+    external_urls: { spotify: string };
+  };
+  tracks: {
+    href: string;
+    total: number;
+  };
+}
+
 
 export const redirectToSpotifyLogin = async () => {
   const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
@@ -40,5 +58,20 @@ export const fetchSpotifyProfile = async (accessToken: string) => {
   const userData = await res.json();
   return userData;
 }
+
+export async function findPlaylistByMood(mood: string, token: string) {
+  const res = await fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(mood)}%20playlist&type=playlist&limit=5`, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+  if(res.status === 401){
+    const authUrl = await generateAuthUrl();
+    window.location.href = authUrl;
+    
+  }
+  const data = await res.json();
+  return data.playlists.items; // id, nom, cover, etc.
+}
+
+
 
 
