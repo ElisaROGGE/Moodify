@@ -1,5 +1,8 @@
 import { toast } from "react-toastify";
-import { findPlaylistByMood, type SpotifyPlaylist } from "../services/spotifyService";
+import {
+  findPlaylistByMood,
+  type SpotifyPlaylist,
+} from "../services/spotifyService";
 import { moods } from "../utils/moodConfig";
 import { useState } from "react";
 
@@ -22,19 +25,22 @@ export function MoodSelector({ accessToken }: { accessToken: string }) {
       );
     }
   };
-  console.log(tracks)
+  console.log(tracks);
   return (
     <div className="flex-1 flex flex-col items-center justify-center">
       {tracks.length > 0 && (
         <div className="flex flex-col items-center w-full max-w-6xl px-4">
+          <h2 className="text-2xl font-bold mb-4">
+            Playlists pour l'humeur sélectionnée :
+          </h2>
           <div className="flex gap-4 mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 w-full max-w-6xl">
+            <div className="flex flex-wrap gap-6 px-4 w-full">
               {tracks
                 .filter((t) => t !== null)
                 .map((playlist) => (
                   <div
                     key={playlist.id}
-                    className="bg-white dark:bg-zinc-900 rounded-2xl shadow-md p-4 flex flex-col items-center text-center"
+                    className="bg-white dark:bg-zinc-900 rounded-2xl shadow-md p-4 flex flex-col items-center text-center w-96"
                   >
                     <img
                       src={playlist.images?.[0]?.url}

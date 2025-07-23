@@ -26,6 +26,7 @@ export const redirectToSpotifyLogin = async () => {
     "user-read-email",
     "playlist-read-private",
     "playlist-modify-public",
+    "user-top-read",
   ];
 
   const codeVerifier = generateCodeVerifier();
@@ -60,7 +61,7 @@ export const fetchSpotifyProfile = async (accessToken: string) => {
 }
 
 export async function findPlaylistByMood(mood: string, token: string) {
-  const res = await fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(mood)}%20playlist&type=playlist&limit=5`, {
+  const res = await fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(mood)}%20playlist&type=playlist&limit=10`, {
     headers: { Authorization: `Bearer ${token}` }
   });
   if(res.status === 401){
@@ -69,7 +70,30 @@ export async function findPlaylistByMood(mood: string, token: string) {
     
   }
   const data = await res.json();
-  return data.playlists.items; // id, nom, cover, etc.
+  return data.playlists.items;
+}
+
+export async function findTopArtists(token: string) {
+  const res = await fetch("https://api.spotify.com/v1/me/top/artists?limit=16&time_range=long_term", {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+  
+  if(res.status === 401){
+    const authUrl = await generateAuthUrl();
+    window.location.href = authUrl;
+    return;
+  }
+  
+  if(res.status === 403){
+    localStorage.removeItem("spotify_access_token");
+    const authUrl = await generateAuthUrl();
+    window.location.href = authUrl;
+    return;
+  }
+
+  const data = await res.json();
+  return data.items;
+  
 }
 
 

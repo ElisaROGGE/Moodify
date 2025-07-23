@@ -13,6 +13,7 @@ export const generateAuthUrl = async () => {
     "user-read-email",
     "playlist-read-private",
     "playlist-modify-public",
+    "user-top-read",
     ];
 
     const authUrl = `https://accounts.spotify.com/authorize?` +
