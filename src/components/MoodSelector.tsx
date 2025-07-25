@@ -15,7 +15,6 @@ export function MoodSelector({ accessToken }: { accessToken: string }) {
     try {
       const tracksFound = await findPlaylistByMood(moodKey, accessToken);
       setTracks(tracksFound);
-      console.log("Tracks pour mood :", selectedMood.mood, tracksFound);
     } catch (err) {
       console.log(err);
       toast.error("Erreur lors de la récupération des recommandations");
@@ -25,7 +24,6 @@ export function MoodSelector({ accessToken }: { accessToken: string }) {
       );
     }
   };
-  console.log(tracks);
   return (
     <div className="flex-1 flex flex-col items-center justify-center">
       {tracks.length > 0 && (
@@ -83,6 +81,7 @@ export function MoodSelector({ accessToken }: { accessToken: string }) {
               {moods.map((m) => (
                 <button
                   key={m.mood}
+                  data-testid={`mood-${m.mood}`}
                   onClick={() => handleMoodSelect(m.mood)}
                   className="text-4xl cursor-pointer hover:scale-110 transition-transform"
                 >

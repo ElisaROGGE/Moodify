@@ -49,7 +49,7 @@ export default function TournamentBracketView({
             </svg>
           </button>
 
-          <h2 className="text-3xl font-bold text-white mb-4">
+          <h2 className="text-3xl font-bold text-white mb-4" aria-label="trophy">
             🏆 CHAMPION DU TOURNOI 🏆
           </h2>
           <div className="bg-white rounded-lg p-6 inline-block">
@@ -84,6 +84,7 @@ export default function TournamentBracketView({
         <div className="text-center">
           <button
             onClick={() => setShowChampion(true)}
+            aria-label="trophy"
             className="bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105"
           >
             🏆 Voir le Champion
@@ -193,7 +194,7 @@ function MatchCard({ match, isActive, isCompleted }: MatchCardProps) {
           />
           {isCompleted && match.winner && (
             <div className="text-center pt-2">
-              <span className="text-xs bg-green-500 text-white px-2 py-1 rounded-full">
+              <span className="text-xs bg-green-500 text-white px-2 py-1 rounded-full" aria-label="trophy">
                 🏆 {match.winner.name}
               </span>
             </div>

@@ -7,6 +7,7 @@ Moodify is a mood-based music recommendation app that helps you discover songs t
 - Mood detection and analysis
 - Personalized music recommendations
 - User-friendly interface
+- Tournament for favorite artist with bracket view
 
 ## Getting Started
 
@@ -16,7 +17,8 @@ Moodify is a mood-based music recommendation app that helps you discover songs t
   ```
 2. Install dependencies:
   ```bash
-  cd moodify
+    
+
   npm install
   ```
 3. Start the application:

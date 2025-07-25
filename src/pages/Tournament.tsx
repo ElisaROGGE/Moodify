@@ -192,7 +192,7 @@ export default function Tournament() {
     <div className="min-h-screen p-4">
       <div className="max-w-6xl mx-auto">
         <header className="text-center text-white mb-8">
-          <h1 className="text-4xl font-bold mb-2">
+          <h1 className="text-4xl font-bold mb-2" aria-label="trophy">
             🏆 Tournoi d'Artistes Spotify
           </h1>
         </header>

@@ -142,7 +142,7 @@ function ArtistCard({
           />
         ) : (
           <div className="w-24 h-24 rounded-full mx-auto mb-3 bg-gray-300 flex items-center justify-center">
-            <span className="text-gray-500 text-sm">🎵</span>
+            <span className="text-gray-500 text-sm" aria-label="music note">🎵</span>
           </div>
         )}
         <h4 className="font-semibold text-sm mb-1 truncate text-gray-500">
@@ -152,13 +152,13 @@ function ArtistCard({
           Popularité: {artist.popularity}/100
         </p>
         <p className="text-xs text-gray-400">
-          {artist.followers?.total
+          {artist.followers?.total !== 0
             ? `${Math.round(artist.followers.total / 1000)}k followers`
             : "Followers inconnus"}
         </p>
         {isWinner && (
           <div className="mt-2">
-            <span className="inline-block bg-green-500 text-white text-xs px-2 py-1 rounded-full">
+            <span className="inline-block bg-green-500 text-white text-xs px-2 py-1 rounded-full" aria-label="trophy">
               🏆 Gagnant
             </span>
           </div>
@@ -166,7 +166,7 @@ function ArtistCard({
 
         {isSelected && (
           <div className="mt-2">
-            <span className="inline-block bg-yellow-500 text-white text-xs px-2 py-1 rounded-full animate-pulse">
+            <span className="inline-block bg-yellow-500 text-white text-xs px-2 py-1 rounded-full animate-pulse" aria-label="star">
               ⭐ Sélectionné !
             </span>
           </div>
